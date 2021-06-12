@@ -9,11 +9,12 @@ def index():
 
 @app.route("/temp_hum")
 def collect_temp_hum():
+    tm = request.args.get("tm")
     temp = request.args.get("temp")
     hum = request.args.get("hum")
 
     with open("temp_hum.csv","a",encoding="utf-8") as fp:
-        fp.write(f"{time.time()},{temp},{hum}\n")
+        fp.write(f"{tm},{temp},{hum}\n")
 
     return "OK"
 
